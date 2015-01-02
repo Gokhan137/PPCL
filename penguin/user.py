@@ -1,7 +1,5 @@
 # This is my first time using Python...so yeah
 
-from crypt import Crypt
-
 class User(object):
 	ID = None
 	confirmationHash = None

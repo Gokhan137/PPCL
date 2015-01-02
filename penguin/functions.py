@@ -1,6 +1,8 @@
 # This is my first time using Python...so yeah
 
-class Functions(object):
+from packetParse import PacketParse
+
+class Functions(PacketParse):
 	def sendMessage(self, message):
 		self.sendPacket(['s', 'm#sm', self.user.internalRoomID, self.user.ID, message])
 	
@@ -9,7 +11,12 @@ class Functions(object):
 	
 	def joinRoom(self, roomID):
 		self.sendPacket(['s', 'j#jr', -1, roomID, 0, 0])
-		self.user.internalRoomID = self.findRoomInt(roomID)
 	
 	def throwSnowball(self, x, y):
 		self.sendPacket(['s', 'u#sb', self.user.internalRoomID, x, y])
+	
+	def getPlayerByName(self, username):
+		self.sendPacket(['s', 'u#pbn', -1, username])
+	
+	def findBuddy(self, penguinID):
+		self.sendPacket(['s', 'u#bf', -1, penguinID])
